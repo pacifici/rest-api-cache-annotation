@@ -1,10 +1,14 @@
 package com.pacifici.annotations;
 
-import java.lang.annotation.*;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-@Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
 public @interface CacheOperation {
-    String operation(); // Possible values: "add", "get", "update", "delete"
-    String cacheName() default "defaultCache"; // Name of the cache
+    String operation();
+    String cacheName();
+    Class<?> cacheType();
 }
